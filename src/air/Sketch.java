@@ -8,13 +8,19 @@ public class Sketch extends PApplet {
     protected int debugEveryNFrames = 100;
 
     protected void showDebugAtIntervals() {
-        if (frameCount % debugEveryNFrames == 0)
+        if (frameCount % debugEveryNFrames == 0) {
             showDebug();
-
+        }
     }
 
     protected void showDebug() {
         log("%.1f", frameRate);
+    }
+
+    public float scaleLinearlyWithMouseX(float min, float max) {
+        int steps = width;
+        float valuePerStep = (max - min) / steps;
+        return min + (valuePerStep * mouseX);
     }
 
     protected void log(String format, Object... args) {
